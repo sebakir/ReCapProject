@@ -9,27 +9,50 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager1 = new CarManager(new EfCarDal());
-            foreach (var car in carManager1.GetCarDetailDtos())
-            {
-                Console.WriteLine(car.CarID + " " + car.BrandName + " " + car.BrandName + " " + car.DailyPrice);
-            }
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
-            {
-                Console.WriteLine(color.ColorName);
-            }
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.BrandName);
-            }
+            CarTest();
+            // ColorTest();
+            //BrandTest();
 
             //CarManager carManager = new CarManager(new EfCarDal());
             //foreach (var car in carManager.GetAll())
             //{
             //    Console.WriteLine(car.Descriptions);
             //}
+        }
+
+        private static void CarTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetCarDetailDtos();
+            if (result.Success == true)
+            {
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.BrandName + "/" + car.ColorName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.ColorName);
+            }
+        }
+
+        private static void BrandTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandName);
+            }
         }
     }
 }
