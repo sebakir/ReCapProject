@@ -35,7 +35,6 @@ namespace Bussiness.Constants
         public static string ReturnDateNotNull = "Araba Zaten Teslim Edildi";
         public static string RentalNotAvailable = "Kiralama Mevcut Degil";
 
-
-
+        public static string CarImageLimitExceeded = "Araba fotograf limiti aşıldı";
     }
 }
