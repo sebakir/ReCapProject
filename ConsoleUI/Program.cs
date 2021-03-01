@@ -32,7 +32,7 @@ namespace ConsoleUI
 
         private static void UserAddTest()
         {
-            User user = new User { FirstName = "Seçkin", LastName = "Bakır", Email = "seckin.bakir@gmal.com", Password = "12345" };
+            User user = new User { FirstName = "Seçkin", LastName = "Bakır", Email = "seckin.bakir@gmal.com" };
             UserManager userManager = new UserManager(new EfUserDal());
             userManager.Add(user);
         }

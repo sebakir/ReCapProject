@@ -1,11 +1,13 @@
 ﻿using Bussiness.Abstract;
 using Bussiness.Constants;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Bussiness.Concrete
 {
@@ -35,10 +37,22 @@ namespace Bussiness.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
+        public User GetByEmail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
         public IResult Update(User user)
         {
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdated);
         }
+
+
     }
 }
