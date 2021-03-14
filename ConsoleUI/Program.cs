@@ -78,22 +78,6 @@ namespace ConsoleUI
             }
         }
 
-        private static void ColorTest()
-        {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
-            {
-                Console.WriteLine(color.ColorName);
-            }
-        }
 
-        private static void BrandTest()
-        {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.BrandName);
-            }
-        }
     }
 }
