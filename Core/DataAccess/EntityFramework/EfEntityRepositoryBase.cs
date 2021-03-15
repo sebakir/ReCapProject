@@ -9,8 +9,8 @@ using System.Text;
 namespace Core.DataAccess.EntityFramework
 {
     public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-        where TEntity : class, IEntity, new()
-        where TContext : DbContext, new()
+        where TEntity:class,IEntity,new()
+        where TContext:DbContext,new()
     {
         public void Add(TEntity entity)
         {
@@ -44,11 +44,11 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
+                    : context.Set<TEntity>().Where(filter).ToList();
             }
         }
-
-
 
         public void Update(TEntity entity)
         {

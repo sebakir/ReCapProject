@@ -20,7 +20,6 @@ namespace Core.Aspects.Autofac.Performance
             _stopwatch = ServiceTool.ServiceProvider.GetService<Stopwatch>();
         }
 
-
         protected override void OnBefore(IInvocation invocation)
         {
             _stopwatch.Start();
@@ -28,7 +27,7 @@ namespace Core.Aspects.Autofac.Performance
 
         protected override void OnAfter(IInvocation invocation)
         {
-            if (_stopwatch.Elapsed.TotalSeconds > _interval)
+            if(_stopwatch.Elapsed.TotalSeconds > _interval)
             {
                 Debug.WriteLine($"Performance : {invocation.Method.DeclaringType.FullName}.{invocation.Method.Name}-->{_stopwatch.Elapsed.TotalSeconds}");
             }

@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-    // Temel voidler icin...
     public interface IResult
     {
         bool Success { get; }
